@@ -7,65 +7,78 @@ export const navItems = [
 
 export const gridItems = [
   {
-    id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
-    description: "",
-    className: "md:col-span-2 md:row-span-2",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-end",
-    img: "/b1.svg",
-    spareImg: "",
+    
+  id: 1,
+  title: "Remote Internship at BioFieldPower (iHub - AWaDH), IIT Ropar",
+  description: `
+   Remote Intern since October 2024.  
+   Worked on-site at IIT Ropar for three weeks during winter.  
+   Led a team of interns, managed task assignment and workflow optimization.  
+   Contributed to a full-stack biomass management platform using Firebase Auth, MongoDB, Express, and Next.js.  
+   Reviewed code submissions, identified bugs, and enforced quality standards.  
+   Implemented critical features and optimized performance across the stack.
+  `,
+  className: "md:col-span-2 md:row-span-2",
+  imgClassName: "w-full h-full opacity-20",
+  titleClassName: "justify-start",
+  img: "/IIT-Ropar-AWaDH.webp", // You can replace this with a relevant SVG (maybe a building, remote icon, or biomass)
+  spareImg: "",
+
+
   },
-  {
-    id: 2,
-    title: "I'm very flexible with time zone communications",
-    description: "",
-    className: "md:col-span-1 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-start",
-    img: "",
-    spareImg: "",
-  },
+  // {
+  //   id: 4,
+  //   title: "Tech enthusiast with a passion for development.",
+  //   description: "I am a motivated and detail-oriented individual passionate about technology and problem-solving.",
+  //   className: "md:col-span-1 md:row-span-1",
+  //   imgClassName: "",
+  //   titleClassName: "justify-start",
+  //   img: "/grid.svg",
+  //   spareImg: "/b4.svg",
+  // },
+
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "Education",
+    description: "",
     className: "md:col-span-1 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center",
     img: "",
     spareImg: "",
   },
+ {
+    id: 5,
+    title: "",
+    description: "",
+    className: "md:col-span-3 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "",
+    img: "",
+    spareImg: "",
+  },
   {
-    id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    id: 2,
+    title: "",
     description: "",
     className: "md:col-span-1 md:row-span-1",
     imgClassName: "",
-    titleClassName: "justify-start",
-    img: "/grid.svg",
-    spareImg: "/b4.svg",
+    titleClassName: "justify-start ",
+    img: "",
+    spareImg: "",
   },
-  {
-    id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
-    className: "md:col-span-2 md:row-span-1",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-    titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
-  },
-  {
+  
+   {
     id: 6,
     title: "Do you want to start a project together?",
     description: "",
-    className: "md:col-span-3 md:row-span-1",
+    className: "md:col-span-2 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center text-center",
     img: "",
     spareImg: "",
   },
+  
 ];
 
 

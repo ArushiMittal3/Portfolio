@@ -11,6 +11,17 @@
   --color-white-200: #C1C2D3;
   --color-blue-100: #E4ECFF;
   --color-purple: #CBACF9;
+  --color-pastelPink:#F3DFF5;
+  --color-textHighlight:#088A68 ;
+  --color-textHighlight2:#B3D4FC	;
+  --color-Filaments:#CDB4DB;
+  --color-cardsBento:#FFFFFF;
+  --color-cardsBorder:#FFB6B9;
+  --color-textNormal:#3A3A3C;
+  --color-textSecondary:#666666;
+  --color-button:#088A68 ;
+  --color-buttonHover:#0A192F ;
+  --color-pastelMint:#D1F2EB;
 }
 
 @theme inline {
@@ -71,5 +82,23 @@
     100% {
       transform: translateY(-50%);
     }
+  }
+}
+
+@layer utilities {
+  .perspective {
+    perspective: 800px;
+  }
+  .animate-spin3d {
+    animation: spin3d 4s linear infinite;
+  }
+}
+
+@keyframes spin3d {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
   }
 }
