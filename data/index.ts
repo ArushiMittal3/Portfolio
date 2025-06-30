@@ -1,225 +1,226 @@
 export const navItems = [
-  { name: "Home", link: "#hero" },
-  { name: "Projects", link: "#projects" },
-  { name: "About", link: "#about" },
-  { name: "Contact", link: "#contact" },
-];
+  { name: 'Home', link: '#hero' },
+  { name: 'Projects', link: '#projects' },
+  { name: 'About', link: '#about' },
+  { name: 'Contact', link: '#contact' }
+]
 
 export const gridItems = [
   {
-    
-  id: 1,
-  title: "About me",
-  description: "I’m Arushi Mittal, an MCA student at NIT Kurukshetra with experience in full-stack and mobile app development, team leadership, and project coordination. As an intern at iHub – AWaDH, IIT Ropar, I contributed to a biomass management platform, working across the stack and leading a team of developers.\nMy technical skills include JavaScript (Next.js, React, Node.js), Firebase, MongoDB, Flutter, basic Linux, and Framer Motion for UI animations. I thrive in collaborative environments and enjoy turning ideas into scalable, real-world applications.\nOn campus, I serve as the Student Placement Coordinator, where I’ve helped organize successful placement drives for companies like Goldman Sachs and DE Shaw. I also lead initiatives as the Secretary of Mexperts, the technical society of MCA and MBA students, contributing to tech-driven events and student engagement.\n Outside of tech, I’m an avid reader and enjoy painting—both of which help me stay creative and balanced. Whether it’s leading a team, building a product, or mentoring peers, I’m driven by a strong sense of purpose, collaboration, and curiosity.",
-  className: " md:col-span-2 md:row-span-2",
-  imgClassName: "",
-  titleClassName: "",
-  img: "", // You can replace this with a relevant SVG (maybe a building, remote icon, or biomass)
-  spareImg: "",
-
-
+    id: 1,
+    title: 'About me',
+    description:
+      'I’m Arushi Mittal, an MCA student at NIT Kurukshetra with experience in full-stack and mobile app development, team leadership, and project coordination. As an intern at iHub – AWaDH, IIT Ropar, I contributed to a biomass management platform, working across the stack and leading a team of developers.\nMy technical skills include JavaScript (Next.js, React, Node.js), Firebase, MongoDB, Flutter, basic Linux, and Framer Motion for UI animations. I thrive in collaborative environments and enjoy turning ideas into scalable, real-world applications.\nOn campus, I serve as the Student Placement Coordinator, where I’ve helped organize successful placement drives for companies like Goldman Sachs and DE Shaw. I also lead initiatives as the Secretary of Mexperts, the technical society of MCA and MBA students, contributing to tech-driven events and student engagement.\n Outside of tech, I’m an avid reader and enjoy painting—both of which help me stay creative and balanced. Whether it’s leading a team, building a product, or mentoring peers, I’m driven by a strong sense of purpose, collaboration, and curiosity.',
+    className: ' md:col-span-2 md:row-span-2',
+    imgClassName: '',
+    titleClassName: '',
+    img: '',
+    spareImg: ''
   },
-  // {
-  //   id: 4,
-  //   title: "Tech enthusiast with a passion for development.",
-  //   description: "I am a motivated and detail-oriented individual passionate about technology and problem-solving.",
-  //   className: "md:col-span-1 md:row-span-1",
-  //   imgClassName: "",
-  //   titleClassName: "justify-start",
-  //   img: "/grid.svg",
-  //   spareImg: "/b4.svg",
-  // },
 
   {
     id: 3,
-    title: "Academic Path",
-    description: "A journey from analytical thinking in Physics to hands-on software development in computer applications. ",
-    className: "md:col-span-1 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-center",
-    img: "",
-    spareImg: "",
+    title: 'Academic Path',
+    description:
+      'A journey from analytical thinking in Physics to hands-on software development in computer applications. ',
+    className: 'md:col-span-1 md:row-span-1',
+    imgClassName: '',
+    titleClassName: 'justify-center',
+    img: '',
+    spareImg: ''
   },
- {
+  {
     id: 5,
-    title: "",
-    description: "",
-    className: "md:col-span-3 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "",
-    img: "",
-    spareImg: "",
+    title: '',
+    description: '',
+    className: 'md:col-span-3 md:row-span-1',
+    imgClassName: '',
+    titleClassName: '',
+    img: '',
+    spareImg: ''
   },
   {
     id: 6,
-    title: "Let’s Paw-sibly Connect 🐾",
-    description: "",
-    className: "md:col-span-2 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-center text-center",
-    img: "",
-    spareImg: "",
+    title: 'Let’s Paw-sibly Connect 🐾',
+    description: '',
+    className: 'md:col-span-2 md:row-span-1',
+    imgClassName: '',
+    titleClassName: 'justify-center text-center',
+    img: '',
+    spareImg: ''
   },
   {
     id: 2,
-    title: "",
-    description: "",
-    className: "md:col-span-1 md:row-span-1 ",
-    imgClassName: "",
-    titleClassName: "justify-start ",
-    img: "",
-    spareImg: "",
-  },
-  
-   
-  
-];
+    title: '',
+    description: '',
+    className: 'md:col-span-1 md:row-span-1 ',
+    imgClassName: '',
+    titleClassName: 'justify-start ',
+    img: '',
+    spareImg: ''
+  }
+]
 
+export type Project = {
+  id: string
+  title: string
+  description: string
+  image: string
+  techStack: string[]
+  githubUrl?: string
+  liveUrl?: string
+  details: {
+    overview: string
+    challenges?: string
+    solutions?: string
+    features: string[]
+  }
+}
 
-
-export const projects = [
+export const projects: Project[] = [
   {
-    id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://github.com/adrianhajdin?tab=repositories",
+    id: '1',
+    title: 'E-Commerce Platform',
+    description: 'Full-featured online store with payment integration',
+    image:
+      'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
+    githubUrl: 'https://github.com/example/ecommerce',
+    liveUrl: 'https://ecommerce.example.com',
+    details: {
+      overview:
+        'A comprehensive e-commerce solution with product listings, cart functionality, user authentication, and payment processing. Built with modern web technologies to provide a seamless shopping experience.',
+      challenges:
+        'Implementing real-time inventory updates and ensuring secure payment processing were the main challenges.',
+      solutions:
+        "Used WebSockets for real-time updates and implemented Stripe's secure payment API with proper validation.",
+      features: [
+        'Product catalog with filters and search',
+        'User authentication and profiles',
+        'Shopping cart with persistent storage',
+        'Checkout process with multiple payment options',
+        'Order history and tracking',
+        'Admin dashboard for product management'
+      ]
+    }
   },
   {
-    id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/zoom-clone",
+    id: '2',
+    title: 'Task Management App',
+    description: 'Collaborative task management for teams',
+    image:
+      'https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['TypeScript', 'Next.js', 'Firebase', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/example/task-manager',
+    liveUrl: 'https://tasks.example.com',
+    details: {
+      overview:
+        'A productivity application designed to help teams organize, prioritize, and track their work. Features real-time collaboration and customizable workflows.',
+      challenges:
+        'Achieving real-time sync across multiple clients while maintaining performance.',
+      features: [
+        'Real-time task updates',
+        'Drag-and-drop interface',
+        'Team collaboration spaces',
+        'Customizable task statuses',
+        'Due date reminders',
+        'Activity history',
+        'Mobile responsive design'
+      ]
+    }
   },
   {
-    id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/ai_saas_app",
+    id: '3',
+    title: 'Health Tracker',
+    description: 'Monitor your fitness and nutrition goals',
+    image:
+      'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['React Native', 'GraphQL', 'PostgreSQL', 'AWS'],
+    githubUrl: 'https://github.com/example/health-tracker',
+    details: {
+      overview:
+        'A mobile application that helps users track their fitness activities, nutrition intake, and health metrics over time. Provides personalized recommendations based on user goals.',
+      challenges:
+        'Processing and visualizing large datasets of health metrics efficiently on mobile devices.',
+      solutions:
+        'Implemented data aggregation on the backend and used optimized charting libraries for smooth visualization.',
+      features: [
+        'Activity tracking with GPS',
+        'Nutrition diary with barcode scanning',
+        'Health metric tracking (weight, sleep, etc.)',
+        'Personalized goal setting',
+        'Progress visualization with charts',
+        'Social sharing features',
+        'Offline functionality'
+      ]
+    }
   },
   {
-    id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "https://github.com/adrianhajdin/iphone",
-  },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    id: '4',
+    title: 'Portfolio Website',
+    description: 'Interactive showcase of creative work',
+    image:
+      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['Next.js', 'Framer Motion', 'Three.js', 'Tailwind CSS'],
+    liveUrl: 'https://portfolio.example.com',
+    details: {
+      overview:
+        'A visually stunning portfolio website featuring interactive 3D elements and smooth animations to showcase creative work in an engaging way.',
+      features: [
+        '3D model viewer',
+        'Interactive animations',
+        'Project showcase gallery',
+        'Responsive design',
+        'Dark/light mode toggle',
+        'Contact form with validation',
+        'Performance optimized'
+      ]
+    }
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    id: '5',
+    title: 'AI Content Generator',
+    description: 'Generate marketing content using AI',
+    image:
+      'https://images.unsplash.com/photo-1677442135136-760c813a743e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['Python', 'FastAPI', 'React', 'OpenAI API'],
+    githubUrl: 'https://github.com/example/ai-content',
+    details: {
+      overview:
+        'A web application that leverages AI to generate marketing content including blog posts, social media captions, and product descriptions based on user prompts.',
+      challenges:
+        'Managing API rate limits and providing meaningful output from AI responses.',
+      features: [
+        'Multiple content generation templates',
+        'Customizable tone and style',
+        'Content history and favorites',
+        'Export options (text, HTML, DOCX)',
+        'User feedback system to improve results',
+        'Team collaboration features'
+      ]
+    }
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-];
-
-export const companies = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: "/dock.svg",
-    nameImg: "/dockerName.svg",
-  },
-];
-
-export const workExperience = [
-  {
-    id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
-  },
-  {
-    id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
-  },
-];
-
-export const socialMedia = [
-  {
-    id: 1,
-    img: "/git.svg",
-  },
-  {
-    id: 2,
-    img: "/twit.svg",
-  },
-  {
-    id: 3,
-    img: "/link.svg",
-  },
-];
+    id: '6',
+    title: 'Weather Dashboard',
+    description: 'Real-time weather forecasts with maps',
+    image:
+      'https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    techStack: ['Vue.js', 'D3.js', 'Mapbox', 'Weather API'],
+    githubUrl: 'https://github.com/example/weather-app',
+    liveUrl: 'https://weather.example.com',
+    details: {
+      overview:
+        'A comprehensive weather application providing current conditions, forecasts, and historical data with interactive maps and data visualizations.',
+      features: [
+        'Current weather conditions',
+        '7-day forecast',
+        'Interactive weather maps',
+        'Historical data trends',
+        'Severe weather alerts',
+        'Location-based recommendations',
+        'Customizable dashboard'
+      ]
+    }
+  }
+]

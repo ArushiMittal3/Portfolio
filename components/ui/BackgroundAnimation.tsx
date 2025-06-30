@@ -1,121 +1,135 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+'use client'
+import { cn } from '@/lib/utils'
+import { useEffect, useRef, useState } from 'react'
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart="#D1F2EB",
-  gradientBackgroundEnd="#B2DFDB",
-  firstColor="62, 180, 137",
-  secondColor="255, 190, 190",
-  thirdColor="173, 232, 244",
-  fourthColor="255, 203, 112",
-  fifthColor="150, 100, 255",
-  pointerColor="82, 182, 154",
-  size = "80%",
-  blendingValue = "hard-light",
+  gradientBackgroundStart = '#D1F2EB',
+  gradientBackgroundEnd = '#B2DFDB',
+  firstColor = '62, 180, 137',
+  secondColor = '255, 190, 190',
+  thirdColor = '173, 232, 244',
+  fourthColor = '255, 203, 112',
+  fifthColor = '150, 100, 255',
+  pointerColor = '82, 182, 154',
+  size = '80%',
+  blendingValue = 'hard-light',
   children,
   className,
   interactive = true,
-  containerClassName,
+  containerClassName
 }: {
-  gradientBackgroundStart?: string;
-  gradientBackgroundEnd?: string;
-  firstColor?: string;
-  secondColor?: string;
-  thirdColor?: string;
-  fourthColor?: string;
-  fifthColor?: string;
-  pointerColor?: string;
-  size?: string;
-  blendingValue?: string;
-  children?: React.ReactNode;
-  className?: string;
-  interactive?: boolean;
-  containerClassName?: string;
+  gradientBackgroundStart?: string
+  gradientBackgroundEnd?: string
+  firstColor?: string
+  secondColor?: string
+  thirdColor?: string
+  fourthColor?: string
+  fifthColor?: string
+  pointerColor?: string
+  size?: string
+  blendingValue?: string
+  children?: React.ReactNode
+  className?: string
+  interactive?: boolean
+  containerClassName?: string
 }) => {
-  const interactiveRef = useRef<HTMLDivElement>(null);
+  const interactiveRef = useRef<HTMLDivElement>(null)
 
-  const [curX, setCurX] = useState(0);
-  const [curY, setCurY] = useState(0);
-  const [tgX, setTgX] = useState(0);
-  const [tgY, setTgY] = useState(0);
+  const [curX, setCurX] = useState(0)
+  const [curY, setCurY] = useState(0)
+  const [tgX, setTgX] = useState(0)
+  const [tgY, setTgY] = useState(0)
   useEffect(() => {
     document.body.style.setProperty(
-      "--gradient-background-start",
+      '--gradient-background-start',
       gradientBackgroundStart
-    );
+    )
     document.body.style.setProperty(
-      "--gradient-background-end",
+      '--gradient-background-end',
       gradientBackgroundEnd
-    );
-    document.body.style.setProperty("--first-color", firstColor);
-    document.body.style.setProperty("--second-color", secondColor);
-    document.body.style.setProperty("--third-color", thirdColor);
-    document.body.style.setProperty("--fourth-color", fourthColor);
-    document.body.style.setProperty("--fifth-color", fifthColor);
-    document.body.style.setProperty("--pointer-color", pointerColor);
-    document.body.style.setProperty("--size", size);
-    document.body.style.setProperty("--blending-value", blendingValue);
-  }, []);
+    )
+    document.body.style.setProperty('--first-color', firstColor)
+    document.body.style.setProperty('--second-color', secondColor)
+    document.body.style.setProperty('--third-color', thirdColor)
+    document.body.style.setProperty('--fourth-color', fourthColor)
+    document.body.style.setProperty('--fifth-color', fifthColor)
+    document.body.style.setProperty('--pointer-color', pointerColor)
+    document.body.style.setProperty('--size', size)
+    document.body.style.setProperty('--blending-value', blendingValue)
+  }, [])
 
   useEffect(() => {
-    function move() {
-      if (!interactiveRef.current) {
-        return;
-      }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
+    function move () {
+      if (!interactiveRef.current) return
+
+      setCurX(curX + (tgX - curX) / 20)
+      setCurY(curY + (tgY - curY) / 20)
       interactiveRef.current.style.transform = `translate(${Math.round(
         curX
-      )}px, ${Math.round(curY)}px)`;
+      )}px, ${Math.round(curY)}px)`
     }
 
-    move();
-  }, [tgX, tgY]);
+    move()
+  }, [
+    tgX,
+    tgY,
+    curX,
+    curY,
+    blendingValue,
+    fifthColor,
+    firstColor,
+    fourthColor,
+    gradientBackgroundEnd,
+    gradientBackgroundStart,
+    pointerColor,
+    secondColor,
+    size,
+    thirdColor
+  ])
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
+      const rect = interactiveRef.current.getBoundingClientRect()
+      setTgX(event.clientX - rect.left)
+      setTgY(event.clientY - rect.top)
     }
-  };
+  }
 
-  const [isSafari, setIsSafari] = useState(false);
+  const [isSafari, setIsSafari] = useState(false)
   useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
+    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
+  }, [])
 
   return (
     <div
       className={cn(
-        "h-full w-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        'h-full w-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]',
         containerClassName
       )}
     >
-      <svg className="hidden">
+      <svg className='hidden'>
         <defs>
-          <filter id="blurMe">
+          <filter id='blurMe'>
             <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
+              in='SourceGraphic'
+              stdDeviation='10'
+              result='blur'
             />
             <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              result="goo"
+              in='blur'
+              mode='matrix'
+              values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8'
+              result='goo'
             />
-            <feBlend in="SourceGraphic" in2="goo" />
+            <feBlend in='SourceGraphic' in2='goo' />
           </filter>
         </defs>
       </svg>
-      <div className={cn("", className)}>{children}</div>
+      <div className={cn('', className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
-          isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
+          'gradients-container h-full w-full blur-lg',
+          isSafari ? 'blur-2xl' : '[filter:url(#blurMe)_blur(40px)]'
         )}
       >
         <div
@@ -177,5 +191,5 @@ export const BackgroundGradientAnimation = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
