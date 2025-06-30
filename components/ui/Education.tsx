@@ -6,29 +6,29 @@ export default function EducationTimeline() {
       year: '2023–2026', 
       degree: 'MCA, NIT Kurukshetra', 
       details: 'CGPA: 9.27',
-      logo: 'jsm-logo.png' // Replace with your actual image path
+      logo: 'nit_logo.png' // Replace with your actual image path
     },
     { 
       year: '2019–2022', 
       degree: 'BSc Physics (Hons.), Panjab University',
-      logo: 'jsm-logo.png' // Replace with your actual image path
+      logo: 'pu_logo-removebg-preview.png' // Replace with your actual image path
     },
     { 
       year: '2017–2019', 
       degree: 'Class 12th, Mukand Lal Public School', 
       details: '88.8%',
-      logo: 'jsm-logo.png' // Replace with your actual image path
+      logo: 'Mukand-removebg-preview.png' // Replace with your actual image path
     },
     { 
       year: '2015–2017', 
       degree: 'Class 10th, Mukand Lal Public School', 
       details: '10 CGPA',
-      logo: 'jsm-logo.png' // Replace with your actual image path
+      logo: 'Mukand-removebg-preview.png' // Replace with your actual image path
     }
   ]
 
   return (
-    <div className="relative py-4">
+    <div className="relative py-4 h-full">
       {/* Timeline line */}
       <div className="absolute left-12 top-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
       
@@ -36,7 +36,7 @@ export default function EducationTimeline() {
         {educationList.map((edu, idx) => (
           <div key={idx} className="relative pl-16 group">
             {/* Logo container */}
-            <div className="absolute left-0 top-0 flex items-center justify-center h-8 w-8 rounded-md overflow-hidden ">
+            <div className="absolute left-0 top-0 flex items-center justify-center h-9 w-9 rounded-md overflow-hidden ">
               {/* Dummy image - replace with your actual image */}
               <div className="h-full w-full  flex items-center justify-center text-xs text-gray-400">
                 {edu.logo ? (

@@ -1,7 +1,7 @@
 export const navItems = [
-  { name: "About", link: "#about" },
+  { name: "Home", link: "#hero" },
   { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
+  { name: "About", link: "#about" },
   { name: "Contact", link: "#contact" },
 ];
 
@@ -9,19 +9,12 @@ export const gridItems = [
   {
     
   id: 1,
-  title: "Remote Internship at BioFieldPower (iHub - AWaDH), IIT Ropar",
-  description: `
-   Remote Intern since October 2024.  
-   Worked on-site at IIT Ropar for three weeks during winter.  
-   Led a team of interns, managed task assignment and workflow optimization.  
-   Contributed to a full-stack biomass management platform using Firebase Auth, MongoDB, Express, and Next.js.  
-   Reviewed code submissions, identified bugs, and enforced quality standards.  
-   Implemented critical features and optimized performance across the stack.
-  `,
-  className: "md:col-span-2 md:row-span-2",
-  imgClassName: "w-full h-full opacity-20",
-  titleClassName: "justify-start",
-  img: "/IIT-Ropar-AWaDH.webp", // You can replace this with a relevant SVG (maybe a building, remote icon, or biomass)
+  title: "About me",
+  description: "I’m Arushi Mittal, an MCA student at NIT Kurukshetra with experience in full-stack and mobile app development, team leadership, and project coordination. As an intern at iHub – AWaDH, IIT Ropar, I contributed to a biomass management platform, working across the stack and leading a team of developers.\nMy technical skills include JavaScript (Next.js, React, Node.js), Firebase, MongoDB, Flutter, basic Linux, and Framer Motion for UI animations. I thrive in collaborative environments and enjoy turning ideas into scalable, real-world applications.\nOn campus, I serve as the Student Placement Coordinator, where I’ve helped organize successful placement drives for companies like Goldman Sachs and DE Shaw. I also lead initiatives as the Secretary of Mexperts, the technical society of MCA and MBA students, contributing to tech-driven events and student engagement.\n Outside of tech, I’m an avid reader and enjoy painting—both of which help me stay creative and balanced. Whether it’s leading a team, building a product, or mentoring peers, I’m driven by a strong sense of purpose, collaboration, and curiosity.",
+  className: " md:col-span-2 md:row-span-2",
+  imgClassName: "",
+  titleClassName: "",
+  img: "", // You can replace this with a relevant SVG (maybe a building, remote icon, or biomass)
   spareImg: "",
 
 
@@ -39,8 +32,8 @@ export const gridItems = [
 
   {
     id: 3,
-    title: "Education",
-    description: "",
+    title: "Academic Path",
+    description: "A journey from analytical thinking in Physics to hands-on software development in computer applications. ",
     className: "md:col-span-1 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -58,19 +51,8 @@ export const gridItems = [
     spareImg: "",
   },
   {
-    id: 2,
-    title: "",
-    description: "",
-    className: "md:col-span-1 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-start ",
-    img: "",
-    spareImg: "",
-  },
-  
-   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Let’s Paw-sibly Connect 🐾",
     description: "",
     className: "md:col-span-2 md:row-span-1",
     imgClassName: "",
@@ -78,6 +60,18 @@ export const gridItems = [
     img: "",
     spareImg: "",
   },
+  {
+    id: 2,
+    title: "",
+    description: "",
+    className: "md:col-span-1 md:row-span-1 ",
+    imgClassName: "",
+    titleClassName: "justify-start ",
+    img: "",
+    spareImg: "",
+  },
+  
+   
   
 ];
 

@@ -31,24 +31,27 @@ export const TextGenerateEffect = ({
   }, [scope.current]);
 
   const renderWords = () => {
-    return (
-      <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span
-              key={word + idx}
-              className={`${idx>3?'text-textHighlight' :'dark:text-textNormal text-textNormal'} opacity-0`}
-              style={{
-                filter: filter ? "blur(10px)" : "none",
-              }}
-            >
-              {word}{" "}
-            </motion.span>
-          );
-        })}
-      </motion.div>
-    );
-  };
+  return (
+    <motion.div ref={scope}>
+      {wordsArray.map((word, idx) => {
+        const isHighlight = ["CODE", "CREATIVITY"].includes(word.toUpperCase());
+        return (
+          <motion.span
+            key={word + idx}
+            className={`${isHighlight ? "text-textHighlight" : "dark:text-textNormal text-textNormal"} opacity-0`}
+            style={{
+              filter: filter ? "blur(10px)" : "none",
+            }}
+          >
+            {word}{" "}
+          </motion.span>
+        );
+      })}
+    </motion.div>
+  );
+};
+
+
 
   return (
     <div className={cn("font-bold", className)}>

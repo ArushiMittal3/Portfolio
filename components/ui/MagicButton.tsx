@@ -6,11 +6,12 @@ const MagicButton = ({
   position,
   handleClick,
   otherClasses
+  
 }: {
   title: string
   icon?: React.ReactNode
   position: string
-  handleClick?: () => void
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   otherClasses?: string
 }) => {
   return (
@@ -28,3 +29,4 @@ const MagicButton = ({
 }
 
 export default MagicButton
+

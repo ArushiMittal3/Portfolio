@@ -1,30 +1,27 @@
-"use client";
+'use client'
 
-import { FaLocationArrow } from "react-icons/fa6";
-import { projects } from "@/data";
-import { ExpandableProjectCards } from "./ui/ExpandableCard";
-import { motion } from "framer-motion";
+import { FaLocationArrow, FaPaperPlane } from 'react-icons/fa6'
+import { projects } from '@/data'
+import { ExpandableProjectCards } from './ui/ExpandableCard'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const RecentProjects = () => {
   return (
-    <div className="py-20 relative" id="projects">
+    <div className='py-20 relative' id='projects'>
       {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 right-1/4 w-64 h-64 bg-[#D1F2EB] rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/2 w-64 h-64 bg-gray-700 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-      </div>
+     
 
-      <div className="relative z-10">
+      <div className='relative z-10'>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center text-[40px] md:text-5xl lg:text-6xl font-bold mb-4"
+          className='text-center text-[40px] md:text-5xl lg:text-6xl font-bold mb-4'
         >
-          A small selection of{" "}
-          <span className="text-gray-800">recent projects</span>
+          A small selection of{' '}
+          <span className='text-gray-800'>recent projects</span>
         </motion.h1>
 
         <motion.p
@@ -32,21 +29,21 @@ const RecentProjects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center text-gray-700 max-w-2xl mx-auto mb-12"
+          className='text-center text-gray-700 max-w-2xl mx-auto mb-12'
         >
-          Here are some of my most recent works. Each project represents unique challenges and creative solutions.
+          Here are some of my most recent works. Each project represents unique
+          challenges and creative solutions.
         </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-18 mt-10">
-          <ExpandableProjectCards />
+        <div className='flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-18 mt-10'>
+          <ExpandableProjectCards limit={3}/>
         </div>
-
-        <motion.div
+<motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-16 "
         >
           <a
             href="/projects" // Update this to your actual projects page
@@ -58,7 +55,7 @@ const RecentProjects = () => {
         </motion.div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RecentProjects;
+export default RecentProjects

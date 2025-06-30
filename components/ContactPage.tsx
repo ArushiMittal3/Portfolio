@@ -2,136 +2,187 @@
 
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#F7FAF9]"> {/* Softer background */}
+    <div id="contact">
+      <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, type: "spring" }}
+      className="min-h-screen hover:shadow-2xl border border-white/50 rounded-4xl "
+      style={{
+        background: 'linear-gradient(90deg, rgba(209, 242, 235, 1) 3%, rgba(151, 196, 188, 1) 87%, rgba(92, 184, 162, 1) 100%)'
+      }}
+      whileHover={{ y: -5 }}
+    >
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
+          {/* Header with enhanced animation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, type: "spring" }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Let's <span className="text-[#2C7A7B]">Connect</span> {/* Darker teal for better contrast */}
-            </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+              whileHover={{ scale: 1.02 }}
+            >
+              Let's <span className="text-button">Connect</span>
+            </motion.h1>
+            <p className="text-gray-700 max-w-2xl mx-auto text-lg ">
               Have a project in mind or want to discuss potential opportunities? 
               I'd love to hear from you!
             </p>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#D1F2EB]" 
-          >
-            <div className="p-8 md:p-10">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-700 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D1F2EB] focus:border-transparent"
-                      placeholder="John Doe"
-                    />
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
+              className="bg-white/50 rounded-xl p-5 shadow-sm hover:shadow-md border border-white/70 flex flex-col gap-3 transition-all duration-300 backdrop-blur-sm"
+              whileHover={{ y: -5 }}
+            >
+              <div className="p-6 md:p-8">
+                <form
+                  action="https://formsubmit.co/arushimittal2432@gmail.com"
+                  method="POST"
+                  className="space-y-5"
+                >
+                  <input type="text" name="_honey" style={{ display: "none" }} />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {[ 
+                      { id: "name", label: "Your Name", placeholder: "Write your name here", type: "text" },
+                      { id: "email", label: "Email Address", placeholder: "Write your email here", type: "email" }
+                    ].map((field) => (
+                      <motion.div key={field.id} whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300 }}>
+                        <label htmlFor={field.id} className="block text-gray-700 mb-1 font-medium text-sm">{field.label}</label>
+                        <input
+                          type={field.type}
+                          id={field.id}
+                          name={field.id}
+                          className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#81E6D9] focus:border-transparent bg-white/70 text-gray-700 transition-all"
+                          placeholder={field.placeholder}
+                          required
+                        />
+                      </motion.div>
+                    ))}
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-gray-700 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D1F2EB] focus:border-transparent"
-                      placeholder="john@example.com"
-                    />
+
+                  {[ 
+                    { id: "subject", label: "Subject", placeholder: "Subject heading", type: "text" },
+                    { id: "message", label: "Your Message", placeholder: "Please write your message here", type: "textarea" }
+                  ].map((field) => (
+                    <motion.div key={field.id} whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300 }}>
+                      <label htmlFor={field.id} className="block text-gray-700 mb-1 font-medium text-sm">{field.label}</label>
+                      {field.type === "textarea" ? (
+                        <textarea
+                          id={field.id}
+                          name={field.id}
+                          rows={4}
+                          className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#81E6D9] focus:border-transparent bg-white/70 text-gray-700 transition-all"
+                          placeholder={field.placeholder}
+                          required
+                        />
+                      ) : (
+                        <input
+                          type={field.type}
+                          id={field.id}
+                          name={field.id}
+                          className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#81E6D9] focus:border-transparent bg-white/70 text-gray-700 transition-all"
+                          placeholder={field.placeholder}
+                          required
+                        />
+                      )}
+                    </motion.div>
+                  ))}
+
+                  <div className="pt-3">
+                    <motion.button
+                      whileHover={{
+                        y: -5,
+                        scale: 1.03,
+                        backgroundColor: "#285E61",
+                        boxShadow: "0 10px 20px -5px rgba(44, 122, 123, 0.4)",
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      className="bg-button text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2 mx-auto transition-all shadow-md text-sm"
+                    >
+                      Send Email <FaPaperPlane className="text-lg" />
+                    </motion.button>
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-gray-700 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D1F2EB] focus:border-transparent"
-                    placeholder="Project Inquiry"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 mb-2">
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D1F2EB] focus:border-transparent"
-                    placeholder="Tell me about your project..."
-                  ></textarea>
-                </div>
-                <div>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    className="bg-[#2C7A7B] hover:bg-[#285E61] text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 mx-auto transition-colors shadow-md"
-                  >
-                    Send Message <FaPaperPlane />
-                  </motion.button>
-                </div>
-              </form>
-            </div>
-          </motion.div>
-
-          {/* Additional Contact Info - Simplified */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 flex flex-wrap justify-center gap-8 text-center"
-          >
-            <a href="mailto:hello@example.com" className="group">
-              <div className="p-6 rounded-xl transition-all group-hover:bg-[#D1F2EB]/20">
-                <div className="text-[#2C7A7B] text-2xl mb-3">
-                  <FaEnvelope />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">Email</h3>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors">hello@example.com</p>
+                </form>
               </div>
-            </a>
+            </motion.div>
 
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group">
-              <div className="p-6 rounded-xl transition-all group-hover:bg-[#D1F2EB]/20">
-                <div className="text-[#2C7A7B] text-2xl mb-3">
-                  <FaLinkedin />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">LinkedIn</h3>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors">linkedin.com/in/yourprofile</p>
-              </div>
-            </a>
-
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group">
-              <div className="p-6 rounded-xl transition-all group-hover:bg-[#D1F2EB]/20">
-                <div className="text-[#2C7A7B] text-2xl mb-3">
-                  <FaGithub />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">GitHub</h3>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors">github.com/yourusername</p>
-              </div>
-            </a>
-          </motion.div>
-        </div>
-      </section>
+            {/* Contact Info Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5"
+            >
+              {[
+                {
+                  icon: <FaEnvelope className="text-xl" />,
+                  title: "Personal Email",
+                  content: "arushimittal2432@gmail.com",
+                  href: "mailto:arushimittal2432@gmail.com"
+                },
+                {
+                  icon: <FaEnvelope className="text-xl" />,
+                  title: "College Email",
+                  content: "523410031@nitkkr.ac.in",
+                  href: "mailto:523410031@nitkkr.ac.in"
+                },
+                {
+                  icon: <FaLinkedin className="text-xl" />,
+                  title: "LinkedIn",
+                  href: "https://www.linkedin.com/in/arushi-mittal-1950a3211/"
+                },
+                {
+                  icon: <FaGithub className="text-xl" />,
+                  title: "GitHub",
+                  href: "https://github.com/ArushiMittal3"
+                },
+                {
+                  icon: <SiLeetcode  className="text-xl" />,
+                  title: "Leetcode",
+                  href: "https://leetcode.com/u/ArushiMittal03/"
+                }
+              ].map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group"
+                >
+                  <div className="p-5 rounded-lg bg-white/50 backdrop-blur-sm border border-white/70 shadow-sm hover:shadow-md transition-all h-full flex flex-col items-center">
+                    <div className="bg-[#E6FFFA] p-3 rounded-full mb-3 group-hover:bg-[#B2F5EA] transition-colors">
+                      <div className="text-[#2C7A7B]">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <h3 className="font-semibold mb-1 text-gray-800 text-sm">{item.title}</h3>
+                    <p className="text-gray-700 group-hover:text-gray-900 transition-colors text-center text-sm">{item.content}</p>
+                  </div>
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      </motion.div>
     </div>
   );
 }
