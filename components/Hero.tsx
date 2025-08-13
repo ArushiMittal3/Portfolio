@@ -14,7 +14,6 @@ const Hero = () => {
 
   const handleDownload =
     (url: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-      console.log('yu')
       e.preventDefault()
       const link = document.createElement('a')
       link.href = url

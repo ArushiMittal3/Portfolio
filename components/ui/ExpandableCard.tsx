@@ -122,7 +122,6 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
               style={{ willChange }}
             >
               <div className='relative'>
-                
                 <div className='absolute top-4 right-4 sm:top-6 sm:right-6 flex gap-2 sm:gap-3'>
                   <motion.button
                     className='bg-white/90 dark:bg-gray-700/90 rounded-full p-2 sm:p-3 shadow-lg hover:scale-110 transition-transform'
@@ -312,18 +311,28 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
                             loading='lazy'
                           />
                         ) : (
-                          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-  <video
-    controls
-    preload="metadata"
-    aria-label={alt}
-    style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
-  >
-    <source src={src} type="video/mp4" />
-    Sorry, your browser doesn't support embedded videos.
-  </video>
-</div>
-
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center'
+                            }}
+                          >
+                            <video
+                              controls
+                              preload='metadata'
+                              aria-label={alt}
+                              style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                display: 'block'
+                              }}
+                            >
+                              <source src={src} type='video/mp4' />
+                              Sorry, your browser does not support embedded
+                              videos.
+                            </video>
+                          </div>
                         )}
                       </div>
                     ))}
@@ -335,125 +344,120 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
         )}
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-6">
-  {displayedProjects.map((project) => (
-    <motion.div
-      key={project.id}
-      layoutId={`card-${project.id}-${id}`}
-      onClick={() => setActiveProject(project)}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden cursor-pointer group relative"
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ 
-        type: "spring",
-        stiffness: 300,
-        damping: 20
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-    >
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#D1F2EB]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      
-      {/* Image with overlay */}
-      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={600}
-          height={400}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          priority
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
-        
-        {/* Title and description */}
-        <div className="absolute bottom-0 left-0 p-5 sm:p-6 w-full">
-          <motion.h3
-            layoutId={`title-${project.id}-${id}`}
-            className="text-2xl sm:text-2xl font-bold text-white mb-2 leading-tight"
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            {project.title}
-          </motion.h3>
-          
-        </div>
-        
-        
-      </div>
-
-      {/* Card footer */}
-      <div className="p-5 sm:p-6 bg-white dark:bg-gray-800/90 backdrop-blur-sm">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.techStack.slice(0, 4).map((tech, index) => (
-            <motion.span
-              key={index}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: index * 0.05,
-                type: "spring",
-                stiffness: 500,
-                damping: 15,
-              }}
-              className="inline-flex items-center text-xs sm:text-sm bg-[#D1F2EB]/80 dark:bg-[#D1F2EB]/20 text-gray-800 dark:text-[#D1F2EB] px-3 py-1 rounded-full font-medium"
-            >
-              {tech}
-            </motion.span>
-          ))}
-          {project.techStack.length > 4 && (
-            <motion.span
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0.2,
-                type: "spring",
-                stiffness: 500,
-                damping: 15,
-              }}
-              className="inline-flex items-center text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full font-medium"
-            >
-              +{project.techStack.length - 4}
-            </motion.span>
-          )}
-        </div>
-
-        <div className="flex justify-end items-end w-full">
-          <motion.button
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-6'>
+        {displayedProjects.map(project => (
+          <motion.div
+            key={project.id}
+            layoutId={`card-${project.id}-${id}`}
+            onClick={() => setActiveProject(project)}
+            className='bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden cursor-pointer group relative'
+            whileHover={{ y: -8, scale: 1.02 }}
             transition={{
-              delay: 0.3,
-              type: "spring",
-              stiffness: 400,
+              type: 'spring',
+              stiffness: 300,
+              damping: 20
             }}
-            className="text-sm sm:text-base font-medium text-[#D1F2EB] dark:text-[#D1F2EB] hover:text-[#b8e0d9] dark:hover:text-[#a3d8cf] flex items-center gap-2 transition-colors"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
           >
-            View Details
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </motion.button>
-          
-          
-        </div>
+            {/* Glow effect on hover */}
+            <div className='absolute inset-0 bg-gradient-to-br from-[#D1F2EB]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none' />
+
+            {/* Image with overlay */}
+            <div className='relative h-48 sm:h-56 md:h-64 overflow-hidden'>
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={600}
+                height={400}
+                className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+                priority
+              />
+              {/* Gradient overlay */}
+              <div className='absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent' />
+
+              {/* Title and description */}
+              <div className='absolute bottom-0 left-0 p-5 sm:p-6 w-full'>
+                <motion.h3
+                  layoutId={`title-${project.id}-${id}`}
+                  className='text-2xl sm:text-2xl font-bold text-white mb-2 leading-tight'
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  {project.title}
+                </motion.h3>
+              </div>
+            </div>
+
+            {/* Card footer */}
+            <div className='p-5 sm:p-6 bg-white dark:bg-gray-800/90 backdrop-blur-sm'>
+              <div className='flex flex-wrap gap-2 mb-4'>
+                {project.techStack.slice(0, 4).map((tech, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      delay: index * 0.05,
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 15
+                    }}
+                    className='inline-flex items-center text-xs sm:text-sm bg-[#D1F2EB]/80 dark:bg-[#D1F2EB]/20 text-gray-800 dark:text-[#D1F2EB] px-3 py-1 rounded-full font-medium'
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+                {project.techStack.length > 4 && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      delay: 0.2,
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 15
+                    }}
+                    className='inline-flex items-center text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full font-medium'
+                  >
+                    +{project.techStack.length - 4}
+                  </motion.span>
+                )}
+              </div>
+
+              <div className='flex justify-end items-end w-full'>
+                <motion.button
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: 0.3,
+                    type: 'spring',
+                    stiffness: 400
+                  }}
+                  className='text-sm sm:text-base font-medium text-[#D1F2EB] dark:text-[#D1F2EB] hover:text-[#b8e0d9] dark:hover:text-[#a3d8cf] flex items-center gap-2 transition-colors'
+                >
+                  View Details
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='16'
+                    height='16'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    className='w-4 h-4'
+                  >
+                    <path d='M5 12h14' />
+                    <path d='m12 5 7 7-7 7' />
+                  </svg>
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
-  ))}
-</div>
     </>
   )
 }

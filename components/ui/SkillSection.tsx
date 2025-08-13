@@ -11,13 +11,10 @@ import {
 } from 'react-icons/fa'
 import {
   SiMongodb,
-  SiMysql,
   SiFirebase,
   SiNextdotjs,
-  SiTypescript,
-  SiCplusplus
 } from 'react-icons/si'
-import { BsPeopleFill, BsLightningFill } from 'react-icons/bs'
+import { BsPeopleFill } from 'react-icons/bs'
 import { FiCode, FiCpu } from 'react-icons/fi'
 
 const skills = {
