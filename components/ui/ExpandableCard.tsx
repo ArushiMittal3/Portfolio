@@ -4,6 +4,7 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 import { AnimatePresence, motion, useWillChange } from 'framer-motion'
 import Image from 'next/image'
 import { projects, Project } from '@/data'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 export const useOutsideClick = (
   ref: React.RefObject<HTMLDivElement | null>,
@@ -121,16 +122,7 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
               style={{ willChange }}
             >
               <div className='relative'>
-                <Image
-                  src={activeProject.image}
-                  alt={activeProject.title}
-                  width={1200}
-                  height={isFullscreen ? 400 : 300}
-                  className={`w-full ${
-                    isFullscreen ? 'h-48 sm:h-56' : 'h-48 sm:h-72'
-                  } object-cover`}
-                  priority
-                />
+                
                 <div className='absolute top-4 right-4 sm:top-6 sm:right-6 flex gap-2 sm:gap-3'>
                   <motion.button
                     className='bg-white/90 dark:bg-gray-700/90 rounded-full p-2 sm:p-3 shadow-lg hover:scale-110 transition-transform'
@@ -206,14 +198,20 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
                       </p>
                     </div>
 
-                    {activeProject.details.challenges && (
+                    {activeProject.details.contributions && (
                       <div className='mb-6 sm:mb-8'>
                         <h3 className='font-semibold text-lg sm:text-xl text-gray-800 dark:text-[#D1F2EB] mb-2 sm:mb-3'>
-                          Challenges
+                          Contributions
                         </h3>
-                        <p className='text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed'>
-                          {activeProject.details.challenges}
-                        </p>
+                        <ul className='list-disc list-inside text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-normal'>
+                          {activeProject.details.contributions.map(
+                            (contribution, index) => (
+                              <li key={index} className='mb-2'>
+                                {contribution}
+                              </li>
+                            )
+                          )}
+                        </ul>
                       </div>
                     )}
                   </div>
@@ -296,142 +294,166 @@ export function ExpandableProjectCards ({ limit }: { limit?: number }) {
                     </div>
                   </div>
                 </div>
+                <div className='mb-8'>
+                  <h3 className='font-semibold text-lg sm:text-xl text-gray-800 dark:text-[#D1F2EB] mb-4'>
+                    Project Media
+                  </h3>
+                  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                    {activeProject.mediaItems?.map(({ id, type, src, alt }) => (
+                      <div
+                        key={id}
+                        className='rounded overflow-hidden shadow-md bg-gray-100 dark:bg-gray-900'
+                      >
+                        {type === 'image' ? (
+                          <img
+                            src={src}
+                            alt={alt}
+                            className='w-full h-48 object-cover'
+                            loading='lazy'
+                          />
+                        ) : (
+                          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <video
+    controls
+    preload="metadata"
+    aria-label={alt}
+    style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
+  >
+    <source src={src} type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+</div>
+
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto px-4 sm:px-6'>
-        {displayedProjects.map(project => (
-          <motion.div
-            key={project.id}
-            layoutId={`card-${project.id}-${id}`}
-            onClick={() => setActiveProject(project)}
-            className='bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all'
-            whileHover={{ y: -5, scale: 1.02 }}
-            transition={{ stiffness: 300, damping: 15 }}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-6">
+  {displayedProjects.map((project) => (
+    <motion.div
+      key={project.id}
+      layoutId={`card-${project.id}-${id}`}
+      onClick={() => setActiveProject(project)}
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden cursor-pointer group relative"
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ 
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+    >
+      {/* Glow effect on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#D1F2EB]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      
+      {/* Image with overlay */}
+      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={600}
+          height={400}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          priority
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
+        
+        {/* Title and description */}
+        <div className="absolute bottom-0 left-0 p-5 sm:p-6 w-full">
+          <motion.h3
+            layoutId={`title-${project.id}-${id}`}
+            className="text-2xl sm:text-2xl font-bold text-white mb-2 leading-tight"
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className='relative h-40 sm:h-48 md:h-56'>
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={600}
-                height={400}
-                className='w-full h-full object-cover'
-                priority
-              />
-              <div className='absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent' />
-              <div className='absolute bottom-0 left-0 p-4 sm:p-6'>
-                <motion.h3
-                  layoutId={`title-${project.id}-${id}`}
-                  className='text-xl sm:text-2xl font-bold text-[#D1F2EB] mb-1 sm:mb-2'
-                  transition={{ stiffness: 300 }}
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${project.id}-${id}`}
-                  className='text-[#D1F2EB]/90 text-sm sm:text-base'
-                  transition={{ stiffness: 300 }}
-                >
-                  {project.description}
-                </motion.p>
-              </div>
-            </div>
-
-            <div className='p-4 sm:p-6'>
-              <div className='flex flex-wrap gap-2 sm:gap-3 mb-3 sm:mb-4'>
-                {project.techStack.slice(0, 3).map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: index * 0.05,
-
-                      stiffness: 500,
-                      damping: 15
-                    }}
-                    className='text-xs sm:text-sm bg-[#D1F2EB] text-gray-800 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full font-medium'
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-                {project.techStack.length > 3 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: 0.15,
-
-                      stiffness: 500,
-                      damping: 15
-                    }}
-                    className='text-[0.7rem] sm:text-[0.78rem] bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-[#D1F2EB] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full font-medium'
-                  >
-                    +{project.techStack.length - 3} more
-                  </motion.span>
-                )}
-              </div>
-
-              <div className='flex flex-wrap gap-2 sm:gap-3 justify-start'>
-                {project.githubUrl && (
-                  <motion.a
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: 0.2,
-
-                      stiffness: 500,
-                      damping: 15
-                    }}
-                    href={project.githubUrl}
-                    onClick={e => e.stopPropagation()}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-xs sm:text-sm bg-gray-800 hover:bg-gray-700 text-[#D1F2EB] px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium'
-                  >
-                    Code
-                  </motion.a>
-                )}
-                {project.liveUrl && (
-                  <motion.a
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      delay: 0.25,
-
-                      stiffness: 500,
-                      damping: 15
-                    }}
-                    href={project.liveUrl}
-                    onClick={e => e.stopPropagation()}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-xs sm:text-sm bg-[#D1F2EB] hover:bg-[#b8e0d9] text-gray-800 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium'
-                  >
-                    Live
-                  </motion.a>
-                )}
-                <motion.button
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{
-                    delay: 0.3,
-
-                    stiffness: 500,
-                    damping: 15
-                  }}
-                  className='text-xs sm:text-sm ml-auto bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-[#D1F2EB] px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium'
-                >
-                  View Details
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            {project.title}
+          </motion.h3>
+          
+        </div>
+        
+        
       </div>
+
+      {/* Card footer */}
+      <div className="p-5 sm:p-6 bg-white dark:bg-gray-800/90 backdrop-blur-sm">
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.techStack.slice(0, 4).map((tech, index) => (
+            <motion.span
+              key={index}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                delay: index * 0.05,
+                type: "spring",
+                stiffness: 500,
+                damping: 15,
+              }}
+              className="inline-flex items-center text-xs sm:text-sm bg-[#D1F2EB]/80 dark:bg-[#D1F2EB]/20 text-gray-800 dark:text-[#D1F2EB] px-3 py-1 rounded-full font-medium"
+            >
+              {tech}
+            </motion.span>
+          ))}
+          {project.techStack.length > 4 && (
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                delay: 0.2,
+                type: "spring",
+                stiffness: 500,
+                damping: 15,
+              }}
+              className="inline-flex items-center text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full font-medium"
+            >
+              +{project.techStack.length - 4}
+            </motion.span>
+          )}
+        </div>
+
+        <div className="flex justify-end items-end w-full">
+          <motion.button
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              delay: 0.3,
+              type: "spring",
+              stiffness: 400,
+            }}
+            className="text-sm sm:text-base font-medium text-[#D1F2EB] dark:text-[#D1F2EB] hover:text-[#b8e0d9] dark:hover:text-[#a3d8cf] flex items-center gap-2 transition-colors"
+          >
+            View Details
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </motion.button>
+          
+          
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</div>
     </>
   )
 }

@@ -22,40 +22,42 @@ import { FiCode, FiCpu } from 'react-icons/fi'
 
 const skills = {
   Languages: [
-    { name: 'JavaScript', icon: <FaJsSquare /> },
-    { name: 'TypeScript', icon: <SiTypescript /> },
+    { name: 'Java', icon: '☕' },          // Java icon emoji (no react-icon equivalent)
+    { name: 'Dart', icon: '🎯' },          // Dart emoji (approximate)
+    { name: 'C', icon: '🔵' },             // C language doesn't have standard icon, blue circle used
     { name: 'Python', icon: <FaPython /> },
-    { name: 'C++', icon: <SiCplusplus /> }
+    { name: 'JavaScript', icon: <FaJsSquare /> }
   ],
   Frontend: [
-    { name: 'React', icon: <FaReact /> },
     { name: 'Next.js', icon: <SiNextdotjs /> },
-    { name: 'Tailwind', icon: <FiCode /> },
-    { name: 'Framer', icon: <BsLightningFill /> }
+    { name: 'Flutter', icon: '🦋' },       // Flutter emoji approximation
+    { name: 'React', icon: <FaReact /> },
+    { name: 'Bootstrap', icon: '🎨' },    // No official icon, paint palette used
+    { name: 'Tailwind CSS', icon: <FiCode /> }
   ],
   Backend: [
-    { name: 'Node.js', icon: <FaNodeJs /> },
     { name: 'Express', icon: <FiCpu /> },
-    { name: 'APIs', icon: '🚀' }
+    { name: 'Node.js', icon: <FaNodeJs /> }
   ],
   Databases: [
-    { name: 'MongoDB', icon: <SiMongodb /> },
-    { name: 'MySQL', icon: <SiMysql /> },
-    { name: 'Firebase', icon: <SiFirebase /> }
+    { name: 'Firebase', icon: <SiFirebase /> },
+    { name: 'MongoDB', icon: <SiMongodb /> }
   ],
-  DevOps: [
-    // Shortened category name
+  ToolsAndPlatforms: [
+    { name: 'Trello', icon: '📋' },
     { name: 'Git', icon: <FaGitAlt /> },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'Linux', icon: '🐧' },
-    { name: 'Postman', icon: '📮' }
+    { name: 'Firebase CLI', icon: <SiFirebase /> },
+    { name: 'Linux', icon: '🐧' }
   ],
-  'Soft Skills': [
+  SoftSkills: [
+    { name: 'Team Management', icon: '👥' },
+    { name: 'Time Management', icon: '⏰' },
     { name: 'Communication', icon: <BsPeopleFill /> },
-    { name: 'Leadership', icon: '👑' },
-    { name: 'Problem Solving', icon: '🧩' }
+    { name: 'Leadership Skills', icon: '👑' },
+    { name: 'Critical Thinking', icon: '🧠' }
   ]
-}
+};
+
 
 const SkillCard = ({
   title,
