@@ -93,7 +93,7 @@ export const projects: Project[] = [
     description:
       'Everything you or your faculy need for your college lab — assignments, tests and coding practice— all in one seamless, secure, and interactive platform',
     image:
-      'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      '/images/virtuallab/cover.png',
     techStack: [
       'Next.js',
       'Node.js',
