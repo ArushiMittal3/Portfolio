@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation'
 
 const Hero = () => {
   const router = useRouter()
-  const downloadUrl = 'arushi_resume_final.pdf' // Adjust this path as needed, put your resume file in /public/files/
+  const downloadUrl = '523410031_resume.pdf' // Adjust this path as needed, put your resume file in /public/files/
 
   const handleDownload =
     (url: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
